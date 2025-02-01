@@ -4,9 +4,9 @@ export async function webApiCaller(
   body: any = {}
 ) {
   const url = generateApiUrl(route, body);
-
-  const options: { method: string; body: string } = {
-    body,
+  
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const options:any= {
     method,
   };
 
