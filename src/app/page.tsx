@@ -8,7 +8,8 @@ import { getTrending } from "@/services/ApiServices";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [trending, setTrending] = useState([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [trending, setTrending] = useState<any>([]);
   const getTrendingList = async () => {
     const response = await getTrending({
       limit: 20,
@@ -25,7 +26,7 @@ export default function Home() {
     <div className="bg-gray-900 text-white font-sans min-h-screen">
       <Navbar />
       <HeroSection />
-      <FeaturedSection trending={trending} />
+      <FeaturedSection trending={trending ?? []} />
       <BrowseByGenreSection />
       <Footer />
     </div>

@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function BannerSection({ banner }: any) {
   return (
     <div

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import AnimeCard from "../AnimeCard";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function FeaturedSection({ trending }: any) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slidesPerView = 7;
@@ -45,20 +46,35 @@ export default function FeaturedSection({ trending }: any) {
             transform: `translateX(-${(currentSlide / slidesPerView) * 100}%)`,
           }}
         >
-          {trending.map((item: any, index: number) => (
-            <div key={index.toString()} className="sm:w-1/2 md:w-1/5 px-2">
-              <AnimeCard
-                id={item?.id}
-                title={item?.title.english ?? item?.title.userPreferred}
-                image={item?.coverImage?.extraLarge}
-                genre={item?.genres}
-                year={item?.seasonYear}
-                status={item?.status}
-                episodes={item?.episodes}
-                ratings={item?.averageScore}
-              />
-            </div>
-          ))}
+          {/* // eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+          {trending.map(
+            (
+              item: {
+                id: number;
+                title: { english: string; userPreferred: string };
+                coverImage: { extraLarge: string };
+                genres: Array<string>;
+                episodes: number;
+                status: string;
+                seasonYear: string;
+                averageScore: number;
+              },
+              index: number
+            ) => (
+              <div key={index.toString()} className="sm:w-1/2 md:w-1/5 px-2">
+                <AnimeCard
+                  id={item?.id}
+                  title={item?.title.english ?? item?.title.userPreferred}
+                  image={item?.coverImage?.extraLarge}
+                  genre={item?.genres}
+                  year={item?.seasonYear}
+                  status={item?.status}
+                  episodes={item?.episodes}
+                  ratings={item?.averageScore}
+                />
+              </div>
+            )
+          )}
         </div>
 
         <button

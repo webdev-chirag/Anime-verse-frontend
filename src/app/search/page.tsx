@@ -1,23 +1,39 @@
-"use client"
-import { useState } from 'react';
-import Image from 'next/image';
+"use client";
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function SearchPage() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedGenre, setSelectedGenre] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState("");
 
-  const genres = ['All', 'Action', 'Romance', 'Adventure', 'Fantasy', 'Comedy', 'Horror'];
+  const genres = [
+    "All",
+    "Action",
+    "Romance",
+    "Adventure",
+    "Fantasy",
+    "Comedy",
+    "Horror",
+  ];
   const animeResults = [
-    { title: 'Naruto', genre: 'Action', image: '/naruto.jpg' },
-    { title: 'Your Name', genre: 'Romance', image: '/your-name.jpg' },
-    { title: 'One Piece', genre: 'Adventure', image: '/one-piece.jpg' },
-    { title: 'Attack on Titan', genre: 'Action', image: '/attack-on-titan.jpg' },
+    { title: "Naruto", genre: "Action", image: "/naruto.jpg" },
+    { title: "Your Name", genre: "Romance", image: "/your-name.jpg" },
+    { title: "One Piece", genre: "Adventure", image: "/one-piece.jpg" },
+    {
+      title: "Attack on Titan",
+      genre: "Action",
+      image: "/attack-on-titan.jpg",
+    },
   ];
 
   // Filtered anime list based on search term and genre
-  const filteredAnime = animeResults.filter((anime) =>
-    (selectedGenre === 'All' || selectedGenre === '' || anime.genre === selectedGenre) &&
-    anime.title.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredAnime = animeResults.filter(
+    (anime) =>
+      (selectedGenre === "All" ||
+        selectedGenre === "" ||
+        anime.genre === selectedGenre) &&
+      anime.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -27,10 +43,18 @@ export default function SearchPage() {
         <div className="container mx-auto flex justify-between items-center px-6">
           <h1 className="text-3xl font-extrabold text-red-500">AnimeStream</h1>
           <nav className="space-x-8">
-            <a href="/" className="hover:text-red-400">Home</a>
-            <a href="#genres" className="hover:text-red-400">Genres</a>
-            <a href="#featured" className="hover:text-red-400">Trending</a>
-            <a href="#contact" className="hover:text-red-400">Contact</a>
+            <Link href="/" className="hover:text-red-400">
+              Home
+            </Link>
+            <Link href="#genres" className="hover:text-red-400">
+              Genres
+            </Link>
+            <Link href="#featured" className="hover:text-red-400">
+              Trending
+            </Link>
+            <Link href="#contact" className="hover:text-red-400">
+              Contact
+            </Link>
           </nav>
         </div>
       </header>
@@ -52,7 +76,11 @@ export default function SearchPage() {
             onChange={(e) => setSelectedGenre(e.target.value)}
           >
             {genres.map((genre, index) => (
-              <option key={index} value={genre} className="bg-gray-900 text-white">
+              <option
+                key={index}
+                value={genre}
+                className="bg-gray-900 text-white"
+              >
                 {genre}
               </option>
             ))}
@@ -65,8 +93,17 @@ export default function SearchPage() {
         {filteredAnime.length > 0 ? (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
             {filteredAnime.map((anime, index) => (
-              <div key={index} className="bg-white bg-opacity-10 backdrop-blur-md p-4 rounded-lg shadow-lg border border-white/20 hover:scale-105 transition">
-                <Image src={anime.image} alt={anime.title} width={300} height={400} className="rounded-lg" />
+              <div
+                key={index}
+                className="bg-white bg-opacity-10 backdrop-blur-md p-4 rounded-lg shadow-lg border border-white/20 hover:scale-105 transition"
+              >
+                <Image
+                  src={anime.image}
+                  alt={anime.title}
+                  width={300}
+                  height={400}
+                  className="rounded-lg"
+                />
                 <h4 className="text-xl font-semibold mt-4">{anime.title}</h4>
                 <p className="text-gray-300">{anime.genre}</p>
               </div>
@@ -81,9 +118,15 @@ export default function SearchPage() {
       <footer className="bg-black py-6 text-center">
         <p>&copy; 2025 AnimeStream. All Rights Reserved.</p>
         <div className="mt-4 space-x-6">
-          <a href="#" className="hover:text-red-400">Privacy Policy</a>
-          <a href="#" className="hover:text-red-400">Terms of Service</a>
-          <a href="#" className="hover:text-red-400">Support</a>
+          <Link href="#" className="hover:text-red-400">
+            Privacy Policy
+          </Link>
+          <Link href="#" className="hover:text-red-400">
+            Terms of Service
+          </Link>
+          <Link href="#" className="hover:text-red-400">
+            Support
+          </Link>
         </div>
       </footer>
     </div>

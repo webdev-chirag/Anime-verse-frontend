@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function TrailerSection({ trailer }: any) {
   return (
     <section className="container mx-auto px-6 py-10">

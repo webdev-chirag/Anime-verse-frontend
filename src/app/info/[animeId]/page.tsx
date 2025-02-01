@@ -3,8 +3,8 @@
 import AnimeDetails from "@/components/AnimeDetails";
 import BannerSection from "@/components/BannerSection";
 import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import Recommendations from "@/components/Recommendations";
+// import Navbar from "@/components/Navbar";
+// import Recommendations from "@/components/Recommendations";
 import RelatedContents from "@/components/RelatedContents";
 import TrailerSection from "@/components/TrailerSection";
 import { getInfo } from "@/services/ApiServices";
@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 export default function AnimeDetailPage() {
   const params = useParams(); // Unwrap the params
   const animeId = params.animeId;
-  const anime: any = {
+  const anime = {
     title: "Attack on Titan",
     description:
       "In a world where humanity resides within enormous walled cities to protect themselves from the Titans, Eren Yeager vows to eradicate them after witnessing the destruction of his home.",
@@ -36,24 +36,36 @@ export default function AnimeDetailPage() {
         cover: response?.coverImage?.large,
         banner: response?.bannerImage,
         genres: response?.genres,
-        tags: response?.tags.map((tag: any) => tag.name),
+        tags: response?.tags.map((tag: { name: string }) => tag.name),
         trailer:
           response?.trailer?.site == "youtube"
             ? `https://www.youtube.com/embed/${response?.trailer?.id}`
             : "",
-        relatedContent: response?.relation.map((content: any) => {
-          return {
-            id: content?.id,
-            title: content?.title?.english ?? content?.title?.userPreferred,
-            image: content?.coverImage?.large,
-            genres: content?.genres,
-            year: content?.seasonYear,
-            status: content?.status,
-            episodes: content?.episodes,
-            ratings: content?.averageScore,
-            type: content?.type,
-          };
-        }),
+        relatedContent: response?.relation.map(
+          (content: {
+            id: number;
+            title: { english: string; userPreferred: string };
+            coverImage: { large: string };
+            genres: Array<string>;
+            seasonYear: string;
+            episodes: number;
+            status: string;
+            averageScore: number;
+            type: string;
+          }) => {
+            return {
+              id: content?.id,
+              title: content?.title?.english ?? content?.title?.userPreferred,
+              image: content?.coverImage?.large,
+              genres: content?.genres,
+              year: content?.seasonYear,
+              status: content?.status,
+              episodes: content?.episodes,
+              ratings: content?.averageScore,
+              type: content?.type,
+            };
+          }
+        ),
         studio: response.studios[0].name,
       });
     }

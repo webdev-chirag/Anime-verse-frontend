@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function AnimeDetails({
   cover,
   title,
@@ -5,7 +6,14 @@ export default function AnimeDetails({
   genres,
   tags,
   studio,
-}: any) {
+}: {
+  cover: string;
+  title: string;
+  description: string;
+  genres: string[];
+  tags: string[];
+  studio: string;
+}) {
   return (
     <section className="container mx-auto px-6 py-10">
       <div className="flex flex-col md:flex-row items-center gap-8">
@@ -27,7 +35,8 @@ export default function AnimeDetails({
           ></p>
 
           <div className="mt-4 flex flex-wrap gap-2">
-            {genres.map((genre: any, index: number) => (
+            {/* // eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+            {genres.map((genre: string, index: number) => (
               <span
                 key={index}
                 className="px-3 py-1 bg-blue-600 rounded-full text-sm"
@@ -35,7 +44,8 @@ export default function AnimeDetails({
                 {genre}
               </span>
             ))}
-            {tags.map((tag: any, index: number) => (
+            {/* // eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+            {tags.map((tag: string, index: number) => (
               <span
                 key={index}
                 className="px-3 py-1 bg-gray-700 rounded-full text-sm"

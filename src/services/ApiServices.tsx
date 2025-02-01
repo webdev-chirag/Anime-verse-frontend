@@ -1,5 +1,6 @@
 import { webApiCaller } from "@/utils/CommonServices";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function getTrending(params: any = undefined) {
   try {
     const response = webApiCaller("GET", "/api/v2/trending", params);
@@ -8,6 +9,7 @@ export async function getTrending(params: any = undefined) {
     console.error("Error fetching data:", error);
   }
 }
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function getPopuler(params: any) {
   try {
     const response = webApiCaller("GET", "/api/v2/popular", params);
@@ -16,7 +18,7 @@ export async function getPopuler(params: any) {
     console.error("Error fetching data:", error);
   }
 }
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function getSearch(params: any) {
   try {
     const response = webApiCaller("GET", "/api/v2/search", params);
@@ -25,7 +27,7 @@ export async function getSearch(params: any) {
     console.error("Error fetching data:", error);
   }
 }
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function postSearch(params: any) {
   try {
     const response = webApiCaller("POST", "/api/v2/search", params);
@@ -34,6 +36,7 @@ export async function postSearch(params: any) {
     console.error("Error fetching data:", error);
   }
 }
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function getInfo(Id: any) {
   try {
     const response = webApiCaller("GET", `/api/v2/info/${Id}`);
