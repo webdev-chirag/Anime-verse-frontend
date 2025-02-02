@@ -4,9 +4,9 @@ export async function webApiCaller(
   body: any = {}
 ) {
   const url = generateApiUrl(route, body);
-  
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const options:any= {
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const options: any = {
     method,
   };
 
@@ -15,9 +15,7 @@ export async function webApiCaller(
   }
 
   try {
-    console.log(url);
     const response = await fetch(url, options);
-
     const finalResponse = await response.json();
     return finalResponse;
   } catch (error) {

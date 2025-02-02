@@ -45,3 +45,21 @@ export async function getInfo(Id: any) {
     console.error("Error fetching data:", error);
   }
 }
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function getEpisodes(Id: any) {
+  try {
+    const response = webApiCaller("GET", `/api/v2/episodes/${Id}`);
+    return response;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function getEpisode(Id: any, ep: any) {
+  try {
+    const response = webApiCaller("GET", `/api/v2/stream/${Id}/${ep}`);
+    return response;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}

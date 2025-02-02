@@ -39,7 +39,7 @@ export default function AnimeDetails({
             {genres.map((genre: string, index: number) => (
               <span
                 key={index}
-                className="px-3 py-1 bg-blue-600 rounded-full text-sm"
+                className="px-3 py-1 bg-red-600 rounded-full text-sm"
               >
                 {genre}
               </span>

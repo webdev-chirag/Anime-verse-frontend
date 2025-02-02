@@ -21,7 +21,7 @@ export default function HeroSection() {
             placeholder="Search anime..."
             className="flex-grow p-3 text-white bg-transparent outline-none placeholder-gray-300 text-lg"
           />
-          <button className="bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition shadow-md">
+          <button className="bg-red-500 text-white px-6 py-3 rounded-full hover:bg-red-600 transition shadow-md">
             Search
           </button>
         </div>

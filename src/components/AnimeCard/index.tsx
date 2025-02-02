@@ -1,34 +1,5 @@
 import Link from "next/link";
 
-// function AnimeCard1({ title, image, genre, year }: any) {
-//   return (
-//     <div className="bg-white bg-opacity-10 backdrop-blur-md p-4 rounded-lg shadow-lg border border-white/20 hover:scale-105 transition">
-//       <img
-//         src={image}
-//         alt="Anime"
-//         width={150}
-//         height={200}
-//         className="rounded-lg"
-//       />
-//       <h4 className="text-xl font-semibold mt-4">{title}</h4>
-//       <p className="text-gray-300">
-//         {genre} | {year}
-//       </p>
-//     </div>
-//   );
-// }
-
-interface AnimeCardProps {
-  id: number;
-  title: string;
-  image: string;
-  genre: string[]; // Array of strings
-  ratings?: number; // Optional property
-  status: string;
-  episodes: number;
-  year: string;
-  type?: string; // Optional property
-}
 export default function AnimeCard({
   id,
   title,
@@ -38,10 +9,10 @@ export default function AnimeCard({
   status,
   episodes,
   year,
-  type,
-}: AnimeCardProps) {
+  type,// eslint-disable-next-line @typescript-eslint/no-explicit-any
+}: any) {
   return (
-    <Link href={`/info/${id}`}>
+    <Link href={`/anime/${id}/info`}>
       <div className="bg-white bg-opacity-10 backdrop-blur-md p-3 rounded-lg shadow-lg border border-white/20 hover:scale-105 transition relative group w-48 h-72">
         {/* Image with a fixed aspect ratio */}
         <img
