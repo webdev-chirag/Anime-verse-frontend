@@ -1,7 +1,8 @@
-import Link from "next/link";
+// import Link from "next/link";
 import { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function HeroSection({ trending }: any) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFading, setIsFading] = useState(false);
@@ -98,17 +99,20 @@ export default function HeroSection({ trending }: any) {
 
       {/* Dots Indicator (Mobile) */}
       <div className="absolute flex flex-col space-y-2 right-6 top-1/2 transform -translate-y-1/2 lg:hidden">
-        {trending.map((_: any, index: number) => (
-          <button
-            key={index}
-            className={`h-2 w-2 rounded-full transition-all duration-300 ${
-              index === currentIndex
-                ? "bg-white backdrop-blur-md scale-125"
-                : "bg-gray-700"
-            }`}
-            onClick={() => changeSlide(index)}
-          ></button>
-        ))}
+        {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          trending.map((_: any, index: number) => (
+            <button
+              key={index}
+              className={`h-2 w-2 rounded-full transition-all duration-300 ${
+                index === currentIndex
+                  ? "bg-white backdrop-blur-md scale-125"
+                  : "bg-gray-700"
+              }`}
+              onClick={() => changeSlide(index)}
+            ></button>
+          ))
+        }
       </div>
 
       {/* Prev & Next Buttons (Large Screens) */}
