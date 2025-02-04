@@ -9,11 +9,11 @@ export default function AnimeCard({
   status,
   episodes,
   year,
-  type,// eslint-disable-next-line @typescript-eslint/no-explicit-any
+  type, // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }: any) {
   return (
     <Link href={`/anime/${id}/info`}>
-      <div className="bg-white bg-opacity-10 backdrop-blur-md p-3 rounded-lg shadow-lg border border-white/20 hover:scale-105 transition relative group w-48 h-72">
+      <div className="bg-white bg-opacity-10 backdrop-blur-md p-3 rounded-lg shadow-lg border border-white/20 hover:scale-105 transition relative group w-full sm:w-48 h-72 mx-auto mb-6">
         {/* Image with a fixed aspect ratio */}
         <img
           src={image}
