@@ -7,8 +7,7 @@ import Footer from "@/components/Footer";
 import PaginationControls from "@/components/PaginationControls";
 import { getEpisodes } from "@/services/ApiServices";
 import Loader from "@/components/Loader";
-import { useSearchParams } from "next/navigation"; // Import useSearchParams
-import { useParams } from "next/navigation";
+import { useSearchParams, useParams } from "next/navigation"; // Import useSearchParams
 
 export default function EpisodeListPage() {
   const params = useParams();
@@ -28,10 +27,10 @@ export default function EpisodeListPage() {
   );
   const getEpisodesList = async () => {
     const episodesResponse = await getEpisodes(animeId);
-    if (episodesResponse.code == 200) {
+    if (episodesResponse?.code == 200) {
       setEpisodes(
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        episodesResponse.results.map((episode: any) => {
+        episodesResponse?.results?.map((episode: any) => {
           return {
             id: episode?.id,
             number: episode?.number,

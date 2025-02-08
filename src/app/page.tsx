@@ -19,8 +19,8 @@ export default function Home() {
       limit: 20,
       p: 1,
     });
-    if (response.code == 200) {
-      setTrending(response.results);
+    if (response?.code == 200) {
+      setTrending(response?.results);
     }
     setLoading(false);
   };
@@ -29,8 +29,8 @@ export default function Home() {
       limit: 20,
       p: 1,
     });
-    if (response.code == 200) {
-      setPopulars(response.results);
+    if (response?.code == 200) {
+      setPopulars(response?.results);
     }
     setLoading(false);
   };

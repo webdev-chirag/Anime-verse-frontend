@@ -1,8 +1,6 @@
 "use client";
-import { useState } from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 
 export default function AnimeListPage() {
   const animeList = [
@@ -14,20 +12,7 @@ export default function AnimeListPage() {
     { id: 6, title: "Death Note", image: "/death-note.jpg" },
     { id: 7, title: "Fullmetal Alchemist", image: "/fma.jpg" },
     { id: 8, title: "My Hero Academia", image: "/mha.jpg" },
-    { id: 9, title: "Tokyo Revengers", image: "/tokyo-revengers.jpg" },
-    { id: 10, title: "Bleach", image: "/bleach.jpg" },
-    { id: 11, title: "Chainsaw Man", image: "/chainsaw-man.jpg" },
-    { id: 12, title: "Hunter x Hunter", image: "/hxh.jpg" },
   ];
-
-  const itemsPerPage = 6;
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const totalPages = Math.ceil(animeList.length / itemsPerPage);
-  const paginatedAnime = animeList.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
 
   return (
     <div className="bg-gray-900 text-white min-h-screen">
@@ -35,12 +20,10 @@ export default function AnimeListPage() {
       <Navbar />
 
       {/* Page Content */}
-      <section className="container mx-auto px-6 py-20">
+      <section className="container mx-auto px-6 py-20 mt-0">
         <h2 className="text-3xl font-semibold mb-6">Anime List</h2>
-
-        {/* Anime Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6">
-          {paginatedAnime.map((anime) => (
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+          {animeList.map((anime) => (
             <div
               key={anime.id}
               className="bg-white bg-opacity-10 p-4 rounded-lg shadow-lg hover:scale-105 transition"
@@ -58,49 +41,7 @@ export default function AnimeListPage() {
             </div>
           ))}
         </div>
-
-        {/* Pagination Controls */}
-        <div className="flex justify-center mt-8 space-x-2">
-          <button
-            className={`px-4 py-2 rounded-l-lg ${
-              currentPage === 1 ? "bg-gray-700" : "bg-red-600 hover:bg-red-700"
-            }`}
-            disabled={currentPage === 1}
-            onClick={() => setCurrentPage(currentPage - 1)}
-          >
-            Prev
-          </button>
-
-          {[...Array(totalPages)].map((_, index) => (
-            <button
-              key={index}
-              className={`px-4 py-2 ${
-                currentPage === index + 1
-                  ? "bg-red-600"
-                  : "bg-gray-700 hover:bg-gray-600"
-              }`}
-              onClick={() => setCurrentPage(index + 1)}
-            >
-              {index + 1}
-            </button>
-          ))}
-
-          <button
-            className={`px-4 py-2 rounded-r-lg ${
-              currentPage === totalPages
-                ? "bg-gray-700"
-                : "bg-red-600 hover:bg-red-700"
-            }`}
-            disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage(currentPage + 1)}
-          >
-            Next
-          </button>
-        </div>
       </section>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }

@@ -17,6 +17,7 @@ export default function RelatedContents({ relatedContentList }: any) {
               status={content?.status}
               episodes={content?.episodes}
               ratings={content?.averageScore}
+              type={content?.type}
             />
           </div>
         ))}

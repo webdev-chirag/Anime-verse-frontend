@@ -40,6 +40,14 @@ export interface Episode {
   id: number;
   title?: string;
   thumbnail?: string;
-  number: number;// eslint-disable-next-line @typescript-eslint/no-explicit-any
+  number: number; // eslint-disable-next-line @typescript-eslint/no-explicit-any
   video?: any;
+}
+
+export interface PageData {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  rows: any[];
+  pageNumber: number;
+  perPage: number;
+  hasMore: boolean;
 }

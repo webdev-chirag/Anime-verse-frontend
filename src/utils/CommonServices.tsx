@@ -16,7 +16,7 @@ export async function webApiCaller(
 
   try {
     const response = await fetch(url, options);
-    const finalResponse = await response.json();
+    const finalResponse = await response?.json();
     return finalResponse;
   } catch (error) {
     console.error(error);
@@ -37,3 +37,17 @@ export const generateApiUrl = (endpoint: string, params: any) => {
 
   return url.toString();
 };
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function debounce<T extends (...args: any[]) => any>(
+  func: T,
+  wait: number
+) {
+  let timeout: NodeJS.Timeout | null;
+
+  return function (this: ThisParameterType<T>, ...args: Parameters<T>) {
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
+}

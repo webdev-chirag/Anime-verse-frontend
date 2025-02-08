@@ -35,9 +35,9 @@ export default function EpisodePage() {
 
   const getEpisodesList = async () => {
     const response = await getEpisodes(animeId);
-    if (response.code == 200) {
+    if (response?.code == 200) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const fetchedEpisodes = response.results.map((episode: any) => ({
+      const fetchedEpisodes = response?.results?.map((episode: any) => ({
         id: episode?.id,
         number: episode?.number,
         title: episode?.title,
